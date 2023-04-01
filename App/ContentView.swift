@@ -8,19 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showOptions = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView{
+            NavigationView{
+                Homeview ()
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarLeading) {
+                            Button{
+                            } label: {
+                                Image(systemName: "camera")
+                            }
+                        }
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                //action
+                            }){
+                                Image(systemName: "paperplane")
+                            }
+                        }
+                    }
+                    
+            }
         }
-        .padding()
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    
+    struct Homeview: View {
+        var body: some View {
+            Text("Home")
+        }
+    }
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
